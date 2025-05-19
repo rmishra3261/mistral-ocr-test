@@ -4,21 +4,25 @@ import base64
 import json
 import time
 from mistralai import Mistral
+from dotenv import load_dotenv 
+
+
+load_dotenv()
 
 st.set_page_config(layout="wide", page_title="Mistral OCR App", page_icon="🖥️")
 st.title("Mistral OCR App")
-st.markdown("<h3 style color: white;'>Built by <a href='https://github.com/AIAnytime'>AI Anytime with ❤️ </a></h3>", unsafe_allow_html=True)
-with st.expander("Expand Me"):
-    st.markdown("""
-    This application allows you to extract information from pdf/image based on Mistral OCR. Built by AI Anytime.
-    """)
+# st.markdown("<h3 style color: white;'>Built by <a href='https://github.com/AIAnytime'>AI Anytime with ❤️ </a></h3>", unsafe_allow_html=True)
+# with st.expander("Expand Me"):
+#     st.markdown("""
+#     This application allows you to extract information from pdf/image based on Mistral OCR. Built by AI Anytime.
+#     """)
 
 # 1. API Key Input
-api_key = st.text_input("Enter your Mistral API Key", type="password")
-if not api_key:
-    st.info("Please enter your API key to continue.")
-    st.stop()
-
+# api_key = st.text_input("Enter your Mistral API Key", type="password")
+# if not api_key:
+#     st.info("Please enter your API key to continue.")
+#     st.stop()
+api_key = os.environ["MISTRAL_API_KEY"]
 # Initialize session state variables for persistence
 if "ocr_result" not in st.session_state:
     st.session_state["ocr_result"] = []
