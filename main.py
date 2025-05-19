@@ -119,9 +119,9 @@ if st.session_state["ocr_result"]:
                 st.markdown(href, unsafe_allow_html=True)
             
             json_data = json.dumps({"ocr_result": result}, ensure_ascii=False, indent=2)
-            create_download_link(json_data, "application/json", f"Output_{idx+1}.json") # json output
+            # create_download_link(json_data, "application/json", f"Output_{idx+1}.json") # json output
             create_download_link(result, "text/plain", f"Output_{idx+1}.txt") # plain text output
-            create_download_link(result, "text/markdown", f"Output_{idx+1}.md") # markdown output
+            # create_download_link(result, "text/markdown", f"Output_{idx+1}.md") # markdown output
 
             # To preview results
             st.write(st.session_state["ocr_result"])
